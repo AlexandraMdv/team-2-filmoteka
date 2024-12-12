@@ -71,16 +71,16 @@ body {
 /* ------- Tablet ------- */
 
 @media (min-width: 768px) {
-    .container {
-        min-width: 768px;
-        padding: 0 32px;
-    }
+  .container {
+      min-width: 768px;
+      padding: 0 32px;
+  }
 }
 
 /* ------- Laptop ------- */
 
 @media (min-width: 1280px) {
-    .container {
-        min-width: 1280px;
-    }
+  .container {
+      min-width: 1280px;
+  }
 }
