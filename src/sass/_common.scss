@@ -60,13 +60,15 @@ body {
     // font-family:
 }
 
-/* ------- Mobila container width -------- */
+/* ------- Mobile container width -------- */
  
 .container {
-    width: 320px;
+    min-width: 320px;
     margin: 0 auto; 
     padding: 0 20px;
 }
+
+/* ------- Tablet ------- */
 
 @media (min-width: 768px) {
     .container {
@@ -75,12 +77,10 @@ body {
     }
 }
 
+/* ------- Laptop ------- */
+
 @media (min-width: 1280px) {
     .container {
         min-width: 1280px;
     }
-}
-
-.header-container {
-    background-color: red;
 }
