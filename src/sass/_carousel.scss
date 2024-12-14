@@ -11,8 +11,7 @@
 // }
 
 .carousel-container {
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
   text-align: center;
 }
 
@@ -72,4 +71,12 @@ h2 {
 
 .carousel-btn.next-btn {
   right: 10px;
+}
+
+.movie {
+  width: 500px;
+}
+
+.h1-carousel {
+  padding-bottom: 5px;
 }
