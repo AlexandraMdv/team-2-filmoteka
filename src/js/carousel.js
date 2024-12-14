@@ -5,6 +5,7 @@ const carouselMovies = document.querySelector('.carousel-movies');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 
+
 let movies = [];
 let currentIndex = 0;
 
@@ -22,16 +23,20 @@ function displayMovies() {
     movieEl.classList.add('movie');
     movieEl.innerHTML = `
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-      <h3>${movie.title}</h3>
-      <div class="rating">${'★'.repeat(Math.round(movie.vote_average / 2))}</div>
+      
     `;
+    // I think we only need images of the trending movies
+    //<h3>${movie.title}</h3>
+    //<p class="rating">${'★'.repeat(Math.round(movie.vote_average / 2))}</p>
     carouselMovies.appendChild(movieEl);
   });
   updateCarousel();
 }
 
 function updateCarousel() {
-  const offset = currentIndex * -220; // 220px is the width of each movie + gap
+  const movieWidth = document.querySelector('.movie').offsetWidth;
+  //220px is not the width of each movie card, it is dinamically calculate by min-width: calc(100% / 5) so we need the offsetWidth to find out the width which changes depending on viewport width
+  const offset = currentIndex * -movieWidth; // 220px is the width of each movie + gap
   carouselMovies.style.transform = `translateX(${offset}px)`;
 }
 
@@ -43,8 +48,21 @@ prevBtn.addEventListener('click', () => {
 });
 
 nextBtn.addEventListener('click', () => {
-  if (currentIndex < movies.length - 1) {
+  const movieWidth = document.querySelector('.movie').offsetWidth; // Calculate dynamic image width
+  console.log(movieWidth);
+  
+  const containerWidth = carouselMovies.offsetWidth;
+  console.log(containerWidth);
+  
+  
+  const maxIndex = Math.round((movies.length * movieWidth - containerWidth) / movieWidth);
+  console.log(maxIndex);
+  
+  
+  if (currentIndex < maxIndex) {
     currentIndex++;
+    console.log(currentIndex);
+    
     updateCarousel();
   }
 });
