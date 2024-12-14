@@ -1,0 +1,158 @@
+/* Stilizare pentru secțiunea hero */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #b71c1c;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Stilizare pentru logo */
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+.svg-hero {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.hero-logo {
+  font-size: 32px;
+  font-weight: bold;
+}
+/* Animație pentru SVG */
+@keyframes rotateHeroSvg {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(90deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .svg-hero {
+    animation: rotateHeroSvg 4s infinite linear;
+  }
+  
+
+/* Stilizare pentru switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #01210c;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+/* Stiluri pentru dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.hero-section.dark-mode {
+  background-color: #333333;
+}
+
+.slider.dark-mode {
+  background-color: #757575;
+}
+
+/* Media queries pentru telefoane */
+@media screen and (max-width: 600px) {
+  .hero-section {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  .hero-logo {
+    font-size: 18px;
+  }
+  .svg-hero {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  .switch {
+    width: 50px;
+    height: 25px;
+  }
+  .slider:before {
+    height: 21px;
+    width: 21px;
+  }
+}
+
+/* Stilizare pentru tablete */
+@media screen and (max-width: 900px) {
+  .hero-section {
+    align-items: flex-start;
+  }
+
+  .hero-logo {
+    font-size: 32px;
+  }
+
+  .switch {
+    margin-top: 10px;
+  }
+}
+
+/* Stilizare pentru laptopuri */
+@media screen and (max-width: 1200px) {
+  .hero-section {
+    padding: 15px;
+  }
+
+  .hero-logo {
+    font-size: 32px;
+  }
+
+  .switch {
+    margin-top: 5px;
+  }
+}
