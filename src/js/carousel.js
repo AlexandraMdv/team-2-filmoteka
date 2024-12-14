@@ -49,20 +49,11 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
   const movieWidth = document.querySelector('.movie').offsetWidth; // Calculate dynamic image width
-  console.log(movieWidth);
-  
   const containerWidth = carouselMovies.offsetWidth;
-  console.log(containerWidth);
-  
-  
   const maxIndex = Math.round((movies.length * movieWidth - containerWidth) / movieWidth);
-  console.log(maxIndex);
-  
-  
+
   if (currentIndex < maxIndex) {
     currentIndex++;
-    console.log(currentIndex);
-    
     updateCarousel();
   }
 });
