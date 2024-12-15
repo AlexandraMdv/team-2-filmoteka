@@ -1,17 +1,58 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto, sans-serif;
+-- Mobile First -- @media (max-width: 768px) {
+
+    .container {
+        display: flex;
+        /*flex-direction: column;*/
+        align-items: flex-start;
+        gap: 10px;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        height: 100vh;
+
+    }
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+
+    }
+
+    .home,
+    .mylibrary {
+        background-color: #555;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .home:hover,
+    .mylibrary:hover {
+        background-color: #777;
+        /* Efect hover */
+    }
+
+    .search-box {
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .search-box input {
+        width: 100%;
+        /* Ocupă toată lățimea */
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+    }
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 316 px;
-}
-
-.header {
+-- desktop -- .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,12 +68,13 @@ body {
     background-repeat: no-repeat;
     color: white;
 }
+
 .buttons {
     display: flex;
-    flex-direction:row;
-    justify-content:flex-start;
-    align-items:flex-start;
-    align-content:flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
     gap: 10px;
 
 }
@@ -40,7 +82,7 @@ body {
 .search-box {
     display: flex;
     padding-left: 20px;
-    
+
 }
 
 .search-box input {
@@ -81,6 +123,3 @@ body {
     color: black;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
- 
-
-
