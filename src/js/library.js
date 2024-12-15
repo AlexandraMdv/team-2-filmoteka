@@ -9,9 +9,7 @@ async function getMovies() {
         if(!response.ok) {
             throw new Error(`HTTP request error! ${response.status}`);
         }
-        console.log(response);
         
-    
         const data = await response.json();
         return data.results;
     } catch (error) {
@@ -19,9 +17,6 @@ async function getMovies() {
     }
         
 }
-
-console.log('movies, ', getMovies().then(data => data));
-
 
 const libraryBtn = document.querySelector('.my-library-btn');
 libraryBtn.addEventListener('click', loadMovies);
@@ -31,15 +26,17 @@ async function loadMovies() {
  
     try {
         const movies = await getMovies();
-        console.log('Movies loaded on button click: ', movies);
-
         if (movies) {
         renderMovies(movies);
         }
 
         const watchedBtn = document.querySelector('.watched-list');
+        const queueBtn = document.querySelector('.queue-list');
         watchedBtn.addEventListener('click', (event) => {
-            renderWatchedMovies(event.target.getAttribute('data-list'), movies);
+            renderWatchedMovies(event.target.getAttribute('data-list'));
+        });
+        queueBtn.addEventListener('click', (event) => {
+            renderWatchedMovies(event.target.getAttribute('data-list'));
         });
 
     } catch (error) {
@@ -53,7 +50,7 @@ function changeHeader() {
     headerContainer.innerHTML = `<button class="home-btn">Home</button>
         <button class="my-library-btn">My library</button> 
         <button class="watched-list" data-list="watched">Watched</button>
-        <button class="queue-list">Queue</button>
+        <button class="queue-list" data-list="queue">Queue</button>
         <div class="movies-container"></div> 
     `;
 }
@@ -61,10 +58,15 @@ function changeHeader() {
 function renderMovies(movies) {
     const moviesContainer = document.querySelector('.movies-container');
     moviesContainer.innerHTML = ''; // Clear existing movies before rendering
-    console.log('movies: ', movies);
 
     movies.forEach(movie => {
-        const { title, poster_path: path, id } = movie;
+
+        const {poster_path: path, id } = movie;
+        
+        let title = 'Unknown'; 
+        if (movie.title) title = movie.title
+        else if (movie.name) title = movie.name;
+
         moviesContainer.innerHTML += `
         <ul class="movie-card" data-movie-id="${id}">
             <li class="movie-title">${title}</li>
@@ -101,60 +103,49 @@ function attachButtonListeners(movies) {
     });
 }
 
-function addToLocalStorage(key, movie) {
-    if (!movie) return; // Guard clause for invalid movies
+function addToLocalStorage(key, movieToStore) {
+    if (!movieToStore) return; // for invalid movies
     const storedMovies = JSON.parse(localStorage.getItem(key)) || [];
     
     // Avoid duplicates
-    if (storedMovies.some(m => m.id === movie.id)) {
-        console.log(`Movie already in ${key} list:`, movie.title);
+    const isMovieStored = storedMovies.findIndex(storedMovie => storedMovie.id === movieToStore.id) !== -1;
+
+    if (isMovieStored) {
+        console.log(`Movie already in ${key} list:`, movieToStore.title);
         alert('Movie already in list')
         return;
     }
 
+    let title = 'Unknown';
+    if(movieToStore.title) title = movieToStore.title
+    else if(movieToStore.name) title = movieToStore.name;
+
     storedMovies.push({
-        id: movie.id,
-        title: movie.title,
-        path: movie.poster_path,
+        id: movieToStore.id,
+        title: title,
+        path: movieToStore.poster_path,
     });
 
     localStorage.setItem(key, JSON.stringify(storedMovies));
-    console.log(`Added movie to ${key} list:`, movie.title);
 }
 
-// console.log(getMovies());
-
-
-
-function renderWatchedMovies(key, movies) {
-    let watchedArray = [];
-    watchedArray.push(JSON.parse(localStorage.getItem(key)));
-    console.log('watched arr', watchedArray);
+function renderWatchedMovies(key) {
+    // Retrieve movies from localStorage
+    const watchedArray = JSON.parse(localStorage.getItem(key)) || [];
 
     const moviesContainer = document.querySelector('.movies-container');
     moviesContainer.innerHTML = ''; // Clear existing movies before rendering
 
-    console.log(moviesContainer);
-    
-    
-    watchedArray.forEach((m, index) => {
-        if(m.id === movies.id ){
-            console.log('matching movies', movies);
-            console.log('watched movies', m);
-            console.log(m[index].title);
-            
-            
-            moviesContainer.innerHTML += `
-                <ul class="movie-card" data-movie-id="${m[index].id}">
-                    <li class="movie-title">${m[index].title}</li>
-                    <li class="movie-image">
-                        <img src="https://image.tmdb.org/t/p/w500${m[index].path}" alt="${m[index].title}" />
-                    </li>
-                </ul>
-            `;
-        }
-       
-    })
-
+    // Render each movie in the watchedArray
+    watchedArray.forEach(movie => {
+        const { id, title, path } = movie;
+        moviesContainer.innerHTML += `
+            <ul class="movie-card" data-movie-id="${id}">
+                <li class="movie-title">${title}</li>
+                <li class="movie-image">
+                    <img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" />
+                </li>
+            </ul>
+        `;
+    });
 }
-
