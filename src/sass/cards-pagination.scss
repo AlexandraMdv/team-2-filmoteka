@@ -1,0 +1,35 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.pagination button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #b92f2c;
+  color: #fff;
+}
+
+.pagination button.active {
+  background-color: #b92f2c;
+  color: #fff;
+
+  border-color: #b92f2c;
+}
+
+.pagination .ellipsis {
+  padding: 0 0.5rem;
+  color: #666;
+}
