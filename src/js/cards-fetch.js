@@ -42,7 +42,7 @@ async function loadMovies(page) {
 function renderPagination() {
   paginationContainer.innerHTML = '';
 
-  createButton('', pageNumber > 1, () => loadMovies(pageNumber - 1));
+  createButton('left', pageNumber > 1, () => loadMovies(pageNumber - 1));
 
   if (pageNumber > 3) {
     createButton('1', true, () => loadMovies(1));
@@ -62,7 +62,9 @@ function renderPagination() {
     createButton(totalPages, true, () => loadMovies(totalPages));
   }
 
-  createButton('', pageNumber < totalPages, () => loadMovies(pageNumber + 1));
+  createButton('right', pageNumber < totalPages, () =>
+    loadMovies(pageNumber + 1)
+  );
 }
 
 function createButton(text, enabled, onClick, active = false) {
@@ -70,8 +72,22 @@ function createButton(text, enabled, onClick, active = false) {
   button.textContent = text;
   button.className = active ? 'page-num active' : 'page-num';
   button.disabled = !enabled;
-  if (enabled) button.addEventListener('click', onClick);
-  paginationContainer.appendChild(button);
+
+  if (text === 'left' || text === 'right') {
+    const img = document.createElement('img');
+    img.src =
+      text === 'left'
+        ? './images/icons.svg#icon-arrow-left'
+        : './images/icons.svg#icon-arrow-right';
+    img.alt = text === 'left' ? 'Previous' : 'Next';
+    img.className = 'pagination-icon';
+    button.appendChild(img);
+  } else {
+    button.textContent = text;
+
+    if (enabled) button.addEventListener('click', onClick);
+    paginationContainer.appendChild(button);
+  }
 }
 
 function addDots() {

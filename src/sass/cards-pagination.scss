@@ -9,11 +9,10 @@
 
 .pagination button {
   padding: 0.5rem 0.75rem;
-  border: 1px solid #ddd;
   background: #fff;
   color: #333;
   transition: background 0.2s, color 0.2s;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -25,11 +24,15 @@
 .pagination button.active {
   background-color: #b92f2c;
   color: #fff;
-
   border-color: #b92f2c;
 }
 
-.pagination .ellipsis {
+.pagination .dots {
   padding: 0 0.5rem;
-  color: #666;
+  color: #000000;
+}
+
+.pagination-icon {
+  width: 20px;
+  height: 20px;
 }
