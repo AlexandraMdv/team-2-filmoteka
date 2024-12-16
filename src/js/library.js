@@ -47,12 +47,14 @@ async function loadMovies() {
 function changeHeader() {
     const headerContainer = document.querySelector('.header-container');
     headerContainer.innerHTML = '';
-    headerContainer.innerHTML = `<button class="home-btn">Home</button>
-        <button class="my-library-btn">My library</button> 
-        <button class="watched-list" data-list="watched">Watched</button>
-        <button class="queue-list" data-list="queue">Queue</button>
-        <div class="movies-container"></div> 
+    headerContainer.innerHTML = `<div class="buttons-header">
+        <button class="button home-btn">Home</button>
+        <button class="button my-library-btn">My library</button> 
+        <button class="button watched-list" data-list="watched">Watched</button>
+        <button class="button queue-list" data-list="queue">Queue</button>
+       </div>
     `;
+    // <div class="movies-container"></div> // no need anymore after queue-list btn
 }
 
 function renderMovies(movies) {
