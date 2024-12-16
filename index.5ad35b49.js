@@ -1,0 +1,2 @@
+function navigateHome(){window.location.href="index.html"}var darkModeToggle=document.getElementById("darkModeToggle");"enabled"===localStorage.getItem("darkMode")&&(document.body.classList.add("dark-mode"),darkModeToggle.checked=!0),darkModeToggle.addEventListener("change",(function(){darkModeToggle.checked?(document.body.classList.add("dark-mode"),localStorage.setItem("darkMode","enabled")):(document.body.classList.remove("dark-mode"),localStorage.setItem("darkMode","disabled"))}));
+//# sourceMappingURL=index.5ad35b49.js.map
