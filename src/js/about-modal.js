@@ -1,50 +1,62 @@
 import 'swiper/swiper-bundle.min.css';
-import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { refs } from './refs';
 
-const { aboutModal, body, btnCloseAboutModal, btnToTop, swiperModal } = refs;
+const { aboutModal, body, btnToTop, btnOpenAboutModal, btnCloseAboutModal, swiperModal } = refs;
 
-// Înregistrăm evenimentele după ce DOM-ul este încărcat
-document.addEventListener('DOMContentLoaded', () => {
+// Open modal when clicking "GoIT Students"
+btnOpenAboutModal.addEventListener('click', openAboutModal);
+
+// Close modal on clicking the close button
+btnCloseAboutModal.addEventListener('click', closeAboutModal);
+
+function openAboutModal() {
   if (!aboutModal) {
-    console.error('Modalul "About" nu a fost găsit.');
+    console.error('Modal element not found.');
     return;
   }
 
-  // Deschidere și închidere modal
-  btnCloseAboutModal.addEventListener('click', closeAboutModal);
-  aboutModal.addEventListener('click', (e) => {
-    if (e.target === aboutModal) closeAboutModal();
-  });
+  aboutModal.classList.add('is-shown');
+  body.classList.add('modal-open');
+  btnToTop.style.display = 'none';
+  document.addEventListener('keydown', handleEscKey);
+  aboutModal.addEventListener('click', handleOutsideClick);
+}
 
-  // Inițializare Swiper pentru modal
-  initializeSwiper();
-});
+function handleEscKey(e) {
+  if (e.key === 'Escape') closeAboutModal();
+}
+
+function handleOutsideClick(e) {
+  if (e.target === aboutModal) closeAboutModal();
+}
 
 function closeAboutModal() {
   aboutModal.classList.remove('is-shown');
   body.classList.remove('modal-open');
   btnToTop.style.display = 'block';
+  document.removeEventListener('keydown', handleEscKey);
+  aboutModal.removeEventListener('click', handleOutsideClick);
 }
 
-function initializeSwiper() {
-  new Swiper(swiperModal, {
-    modules: [Navigation, Pagination, Scrollbar],
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      draggable: true,
-    },
-    loop: true,
-    slidesPerView: 'auto',
-    centeredSlides: true,
-    grabCursor: true,
-  });
-}
+// Initialize Swiper for modal content
+const swiper = new Swiper(swiperModal, {
+  modules: [Navigation, Pagination, Scrollbar],
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+  loop: true,
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  grabCursor: true,
+});
