@@ -3,10 +3,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: #b71c1c;
+  padding-top: 209px;
+  padding-left: 32px;
   color: white;
-  border-radius: 8px;
+  background-color: #b71c1c;
 }
 
 /* Stilizare pentru logo */
@@ -16,32 +16,34 @@
 }
 
 .svg-hero {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+  width: 59px;
+  height: 59px;
+  padding-right: 8px;
 }
 
 .hero-logo {
-  font-size: 32px;
-  font-weight: bold;
+  font-family: Roboto;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 75px;
+  text-align: center;
 }
 /* Animație pentru SVG */
 @keyframes rotateHeroSvg {
-    0% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(90deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .svg-hero {
-    animation: rotateHeroSvg 4s infinite linear;
+  50% {
+    transform: rotate(90deg);
   }
-  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.svg-hero {
+  animation: rotateHeroSvg 4s infinite linear;
+}
 
 /* Stilizare pentru switch */
 .switch {
