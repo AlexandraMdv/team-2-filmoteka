@@ -106,7 +106,8 @@ header.container {
 
 
 
-.mylibrary {
+.mylibrary, 
+.library-btn {
     background-color: white;
     color: black;
     font-weight: bold;
@@ -133,6 +134,11 @@ header.container {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 .buttons-header button:last-child:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.buttons-header button.library-btn:hover {
     background-color: #000;
     color: #fff;
 }
