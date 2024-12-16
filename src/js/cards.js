@@ -30,7 +30,7 @@ export function showMoviesOnPage(movies, genreList) {
             : ''
         }
         <div class="movie-info">
-          <h3 class="movie-title">${title}</h3>
+          <h3 class="movie-title">${title.toUpperCase()}</h3>
           <p class="movie-meta">${genres} | ${year}</p>
         </div>
       </div>
