@@ -2,7 +2,7 @@
 @media (max-width: 767px) {
  
     
-    .container {
+    header.container {
         display: flex;
         align-items: flex-start;
         gap: 10px;
@@ -61,7 +61,7 @@
     
 
 
-.container {
+header.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,4 +131,8 @@
     background-color: white;
     color: black;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.buttons-header button:last-child:hover {
+    background-color: #000;
+    color: #fff;
 }

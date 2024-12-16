@@ -1,0 +1,65 @@
+/* Cards Container */
+.cards-container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Movie Card Styles */
+.movie-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.movie-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styles */
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #eee;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Movie Info Section */
+.movie-info {
+  padding: 10px;
+}
+
+.movie-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+.movie-meta {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #b92f2c;
+}
