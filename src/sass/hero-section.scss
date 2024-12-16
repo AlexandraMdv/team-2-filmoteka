@@ -5,8 +5,6 @@
   align-items: center;
   padding-top: 209px;
   padding-left: 32px;
-  color: white;
-  background-color: #b71c1c;
 }
 
 /* Stilizare pentru logo */
@@ -36,8 +34,7 @@
   50% {
     transform: rotate(90deg);
   }
-  100% { 
-     
+  100% {
     transform: rotate(360deg);
   }
 }
@@ -50,8 +47,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 40px;
+  height: 24px;
 }
 
 .switch input {
@@ -75,9 +72,9 @@
 .slider:before {
   position: absolute;
   content: '';
-  height: 26px;
-  width: 26px;
-  left: 4px;
+  height: 16px;
+  width: 16px;
+  left: 3px;
   bottom: 4px;
   background-color: white;
   transition: 0.4s;
@@ -85,15 +82,15 @@
 }
 
 input:checked + .slider {
-  background-color: #01210c;
+  background-color: #0abf49;
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(16px);
 }
 /* Stiluri pentru dark mode */
 body.dark-mode {
-  background-color: #121212;
+  background-color: #292929;
   color: #ffffff;
 }
 
@@ -106,56 +103,34 @@ body.dark-mode {
 }
 
 /* Media queries pentru telefoane */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 319px) {
   .hero-section {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
+    padding-top: 402px;
+    padding-left: 65px;
   }
   .hero-logo {
-    font-size: 18px;
+    font-size: 32px;
+    line-height: 38px;
   }
   .svg-hero {
-    width: 40px;
-    height: 40px;
-    margin-right: 5px;
-  }
-  .switch {
-    width: 50px;
-    height: 25px;
-  }
-  .slider:before {
-    height: 21px;
-    width: 21px;
+    width: 32px;
+    height: 32px;
   }
 }
 
 /* Stilizare pentru tablete */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .hero-section {
-    align-items: flex-start;
+    padding-top: 191px;
+    padding-left: 48px;
   }
-
+  .svg-hero {
+    width: 40px;
+    height: 40px;
+    padding-right: 8px;
+  }
   .hero-logo {
-    font-size: 32px;
-  }
-
-  .switch {
-    margin-top: 10px;
-  }
-}
-
-/* Stilizare pentru laptopuri */
-@media screen and (max-width: 1200px) {
-  .hero-section {
-    padding: 15px;
-  }
-
-  .hero-logo {
-    font-size: 32px;
-  }
-
-  .switch {
-    margin-top: 5px;
+    font-size: 40px;
+    line-height: 47px;
   }
 }
