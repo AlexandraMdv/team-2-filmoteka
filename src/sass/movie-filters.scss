@@ -1,0 +1,68 @@
+
+.movie-filters {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+label {
+  flex: 1;
+  min-width: 120px;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.movie {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.movie:last-child {
+  border-bottom: none;
+}
+
+.movie h3 {
+  margin: 0;
+  color: #222;
+}
+
+.movie p {
+  margin: 5px 0 0;
+  color: #666;
+}
