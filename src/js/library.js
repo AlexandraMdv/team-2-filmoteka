@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { loadMovies } from "./cards-fetch.js"; 
 
 const TRENDING_URL = 'https://api.themoviedb.org/3/trending/all/day?language=en-US';
 const API_KEY = '918aba14d75940fa7e0d80373b9ee894';
@@ -19,16 +19,16 @@ async function getMovies() {
 }
 
 const libraryBtn = document.querySelector('.my-library-btn');
-libraryBtn.addEventListener('click', loadMovies);
+libraryBtn.addEventListener('click', loadMoviesLibrary);
+const heroSection = document.querySelector('.hero-section');
 
-async function loadMovies() {
+async function loadMoviesLibrary() {
     changeHeader();
+    // disableSections(heroSection);
+    // heroSection.classList.add('disable-section')
  
     try {
-        const movies = await getMovies();
-        if (movies) {
-        renderMovies(movies);
-        }
+        loadMovies(1);
 
         const watchedBtn = document.querySelector('.watched-list');
         const queueBtn = document.querySelector('.queue-list');
@@ -58,26 +58,39 @@ function changeHeader() {
 }
 
 function renderMovies(movies) {
-    const moviesContainer = document.querySelector('.movies-container');
+    const moviesContainer = document.querySelector('.cards-container');
     moviesContainer.innerHTML = ''; // Clear existing movies before rendering
 
     movies.forEach(movie => {
-
+    
         const {poster_path: path, id } = movie;
-        
+
         let title = 'Unknown'; 
         if (movie.title) title = movie.title
         else if (movie.name) title = movie.name;
 
+        // moviesContainer.innerHTML += `
+        // // <ul class="movie-card" data-movie-id="${id}">
+        // //     <li class="movie-title">${title}</li>
+        // //     <li class="movie-image">
+        // //     <img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" />
+        // //     </li>
+        // //     <button class="add-to-watched" data-movie-id="${id}">Add to Watched</button>
+        // //     <button class="add-to-queue" data-movie-id="${id}">Add to Queue</button>
+        // // </ul>`;
         moviesContainer.innerHTML += `
-        <ul class="movie-card" data-movie-id="${id}">
-            <li class="movie-title">${title}</li>
-            <li class="movie-image">
-            <img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" />
-            </li>
-            <button class="add-to-watched" data-movie-id="${id}">Add to Watched</button>
-            <button class="add-to-queue" data-movie-id="${id}">Add to Queue</button>
-        </ul>`;
+        <div class="movie-card" data-movie-id="${id}>
+            ${
+            posterUrl
+                ? `<img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" class="movie-poster">`
+                : ''
+            }
+            <div class="movie-info">
+            <h3 class="movie-title">${title.toUpperCase()}</h3>
+            <p class="movie-meta">${genres} | ${year}</p>
+            </div>
+        </div>
+        `
     });
 
     // Attach event listeners to buttons
@@ -134,20 +147,31 @@ function addToLocalStorage(key, movieToStore) {
 function renderWatchedMovies(key) {
     // Retrieve movies from localStorage
     const watchedArray = JSON.parse(localStorage.getItem(key)) || [];
+    console.log(watchedArray);
+    
 
-    const moviesContainer = document.querySelector('.movies-container');
+    const moviesContainer = document.querySelector('.cards-container');
     moviesContainer.innerHTML = ''; // Clear existing movies before rendering
 
     // Render each movie in the watchedArray
     watchedArray.forEach(movie => {
-        const { id, title, path } = movie;
-        moviesContainer.innerHTML += `
-            <ul class="movie-card" data-movie-id="${id}">
-                <li class="movie-title">${title}</li>
-                <li class="movie-image">
-                    <img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" />
-                </li>
-            </ul>
-        `;
+        const {id, title, path } = movie;
+
+    const posterUrl = path
+        ? `https://image.tmdb.org/t/p/w500${path}`
+        : '';
+    
+    moviesContainer.innerHTML += `
+      <div class="movie-card" data-movie-id="${id}">
+        ${
+          posterUrl
+            ? `<img src="${posterUrl}" alt="${title}" class="movie-poster">`
+            : ''
+        }
+        <div class="movie-info">
+          <h3 class="movie-title">${title.toUpperCase()}</h3>
+        </div>
+      </div>
+    `;
     });
 }
