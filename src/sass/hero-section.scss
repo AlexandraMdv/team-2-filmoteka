@@ -1,0 +1,136 @@
+/* Stilizare pentru secțiunea hero */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 209px;
+  padding-left: 32px;
+}
+
+/* Stilizare pentru logo */
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+.svg-hero {
+  width: 59px;
+  height: 59px;
+  padding-right: 8px;
+}
+
+.hero-logo {
+  font-family: Roboto;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 75px;
+  text-align: center;
+}
+/* Animație pentru SVG */
+@keyframes rotateHeroSvg {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.svg-hero {
+  animation: rotateHeroSvg 4s infinite linear;
+}
+
+/* Stilizare pentru switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #0abf49;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+/* Stiluri pentru dark mode */
+body.dark-mode {
+  background-color: #292929;
+  color: #ffffff;
+}
+
+.hero-section.dark-mode {
+  background-color: #333333;
+}
+
+.slider.dark-mode {
+  background-color: #757575;
+}
+
+/* Media queries pentru telefoane */
+@media screen and (max-width: 319px) {
+  .hero-section {
+    padding-top: 402px;
+    padding-left: 65px;
+  }
+  .hero-logo {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .svg-hero {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Stilizare pentru tablete */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    padding-top: 191px;
+    padding-left: 48px;
+  }
+  .svg-hero {
+    width: 40px;
+    height: 40px;
+    padding-right: 8px;
+  }
+  .hero-logo {
+    font-size: 40px;
+    line-height: 47px;
+  }
+}
