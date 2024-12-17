@@ -26,8 +26,8 @@
     "swiper": "^11.1.15"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.13.2",
-    "parcel": "^2.13.2",
+    "@parcel/transformer-sass": "^2.13.3",
+    "parcel": "^2.13.3",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
