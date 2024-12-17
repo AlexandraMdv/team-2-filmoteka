@@ -22,11 +22,12 @@
     "basiclightbox": "^5.0.4",
     "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.7"
+    "notiflix": "^3.2.7",
+    "swiper": "^11.1.15"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.6.0",
-    "parcel": "^2.6.0",
+    "@parcel/transformer-sass": "^2.13.3",
+    "parcel": "^2.13.3",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
