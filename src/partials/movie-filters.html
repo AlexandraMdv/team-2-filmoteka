@@ -1,8 +1,8 @@
 <div class="movie-filters">
   <div class="filters">
     <label>
-      Genre:
-      <select id="genre">
+      GENRE:
+      <select class="genre" id="genre">
         <option value="All">All</option>
         <option value="Action">Action</option>
         <option value="Drama">Drama</option>
@@ -22,9 +22,9 @@
         <option value="Musical">Musical</option>
       </select>
     </label>
-    <label>
-      Year:
-      <select id="year">
+    <label class="movie-year">
+      YEAR:
+      <select class="year" id="year">
         <option value="All">All</option>
         <option value="2024">2024</option>
         <option value="2023">2023</option>
@@ -58,9 +58,10 @@
         <option value="1995">1995</option>
       </select>
     </label>
-    <label>
-      Minimum Rating:
+    <label class="movie-rating">
+      MINIMUM RATING:
       <input
+        class="rating"
         type="number"
         id="rating"
         placeholder=" 8.5"
@@ -69,7 +70,7 @@
         max="10"
       />
     </label>
-    <button id="filterBtn">Filter</button>
+    <button class="button-filters" id="filterBtn">Filter</button>
   </div>
   <div id="results">
     <!-- Filtered movie results will be displayed here -->
