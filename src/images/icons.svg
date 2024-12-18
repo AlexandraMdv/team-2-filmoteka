@@ -17,3 +17,16 @@
 </symbol>
 </defs>
 </svg>
+
+<svg
+    id="search"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    fill="currentColor"
+  >
+    <path
+      d="M21 21l-4.35-4.35a8 8 0 1 0-1.65 1.65L21 21zM10 18a8 8 0 1 1 5.66-2.34A8 8 0 0 1 10 18z"
+    />
+</svg>
