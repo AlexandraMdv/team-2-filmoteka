@@ -58,7 +58,6 @@ function changeHeader() {
             </div>
         </div>
     `;
-    // <div class="movies-container"></div> // no need anymore after queue-list btn
 }
 
 function renderMovies(movies) {
@@ -73,15 +72,6 @@ function renderMovies(movies) {
         if (movie.title) title = movie.title
         else if (movie.name) title = movie.name;
 
-        // moviesContainer.innerHTML += `
-        // // <ul class="movie-card" data-movie-id="${id}">
-        // //     <li class="movie-title">${title}</li>
-        // //     <li class="movie-image">
-        // //     <img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" />
-        // //     </li>
-        // //     <button class="add-to-watched" data-movie-id="${id}">Add to Watched</button>
-        // //     <button class="add-to-queue" data-movie-id="${id}">Add to Queue</button>
-        // // </ul>`;
         moviesContainer.innerHTML += `
         <div class="movie-card" data-movie-id="${id}>
             ${

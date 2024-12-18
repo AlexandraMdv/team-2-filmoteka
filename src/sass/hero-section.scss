@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 209px;
+  // padding-top: 209px;
   padding-left: 32px;
 }
 
@@ -103,10 +103,10 @@ body.dark-mode {
 }
 
 /* Media queries pentru telefoane */
-@media screen and (max-width: 319px) {
+@media screen and (min-width: 319px) {
   .hero-section {
-    padding-top: 402px;
-    padding-left: 65px;
+    // padding-top: 402px;
+    padding: 20px 30px;
   }
   .hero-logo {
     font-size: 32px;
@@ -121,8 +121,8 @@ body.dark-mode {
 /* Stilizare pentru tablete */
 @media screen and (max-width: 768px) {
   .hero-section {
-    padding-top: 191px;
-    padding-left: 48px;
+    // padding-top: 191px;
+    // padding-left: 48px;
   }
   .svg-hero {
     width: 40px;
