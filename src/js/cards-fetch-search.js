@@ -6,8 +6,6 @@ import { genreList } from './cards-fetch.js';
 // Fetch movies based on a search query
 async function searchMovies(query, page = 1) {
     if (!query.trim()) {
-      console.log(query);
-      
       console.error('Search query is empty.');
       return [];
     }
