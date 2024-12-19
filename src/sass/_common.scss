@@ -84,3 +84,11 @@ body {
       min-width: 1280px;
   }
 }
+
+.disable-section {
+  display: hidden;
+}
+
+.ensable-section {
+  display: block;
+}

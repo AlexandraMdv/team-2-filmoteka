@@ -101,3 +101,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchGenres();
   loadMovies(1);
 });
+
+export {loadMovies};
