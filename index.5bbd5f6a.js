@@ -1,2 +1,0 @@
-var e=document.getElementById("darkModeToggle");"enabled"===localStorage.getItem("darkMode")&&(document.body.classList.add("dark-mode"),e.checked=!0),e.addEventListener("change",function(){e.checked?(document.body.classList.add("dark-mode"),localStorage.setItem("darkMode","enabled")):(document.body.classList.remove("dark-mode"),localStorage.setItem("darkMode","disabled"))});
-//# sourceMappingURL=index.5bbd5f6a.js.map
