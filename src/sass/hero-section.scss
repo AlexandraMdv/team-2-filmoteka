@@ -1,10 +1,16 @@
 /* Stilizare pentru secțiunea hero */
+.header-section {
+  position: relative;
+}
+
 .hero-section {
+  width : 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // padding-top: 209px;
-  padding-left: 32px;
+  gap: 20px;
+  position: absolute;
+  top: 200px;
 }
 
 /* Stilizare pentru logo */
@@ -25,6 +31,7 @@
   font-weight: 500;
   line-height: 75px;
   text-align: center;
+  color: #fff;
 }
 /* Animație pentru SVG */
 @keyframes rotateHeroSvg {
@@ -106,7 +113,7 @@ body.dark-mode {
 @media screen and (min-width: 319px) {
   .hero-section {
     // padding-top: 402px;
-    padding: 20px 30px;
+    padding: 20px;
   }
   .hero-logo {
     font-size: 32px;

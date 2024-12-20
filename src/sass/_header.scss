@@ -1,12 +1,11 @@
 //-- Mobile First -- //
 @media (max-width: 767px) {
- 
-    
+
     header.container {
         padding: 20px;
         background-color: #333;
         color: white;
-        height: 100vh;
+        height: 460px;
 
     }
 
@@ -61,6 +60,10 @@
 
     
 @media (min-width: 767px) {
+    header.container {
+        height: 300px;
+    }
+    
     .buttons-header {
         flex-direction: row;
     }
@@ -75,15 +78,29 @@
     }
 } 
 
+@media (min-width: 1024px) {
+    header.container {
+        height: 300px;
+    }
+}
+
 header.container {
     padding: 20px;
     width: 100%;
-    height: 300px;
     background-image: url('../images/abstract-background-with-red-lines\ 1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
+}
+
+.search-box input {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 100px;
 }
 
 .buttons-header {
