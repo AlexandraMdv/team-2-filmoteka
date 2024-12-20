@@ -25,7 +25,7 @@ export const createLibraryDOM = moviesArr => {
         data-vote-count="${movie.vote_count}"
         data-popularity="${movie.popularity}"
         data-about="${movie.overview}"
-        data_original_title="${movie.original_title}"
+        data_original_title="${movie.title}"
         >
       </div>
     <img src="${movieImg}" class="image" alt="${name}" />

@@ -56,7 +56,7 @@ function galleryHandler(e) {
   modalImageContainer.innerHTML = `<img src="${imageLink}">`;
 
   //film title
-  const containerInfoTitle = element.querySelector('.movie-info');
+  const containerInfoTitle = element.querySelector('.movie-title');
   if (!containerInfoTitle) {
     console.error('Element with selector .container-info  not found');
     return;
@@ -65,33 +65,23 @@ function galleryHandler(e) {
 
   // //film popularity
   // const filmPopularity = elementInfo.getAttribute('data-popularity');
-  // if (!filmPopularity) {
-  //   console.error('Element with data-popularity attribute not found');
-  //   return;
-  // }
-  // modalFilmPopularity.textContent = `Popularity: ${filmPopularity}`;
+  // const filmPopularityRound = Math.round(filmPopularity);
+  // modalFilmPopularity.innerHTML = `Popularity: ${filmPopularityRound} `;
+
+  //film original title
+  const filmOriginalName = elementInfo.getAttribute('data_original_title');
+  const originalTitle =
+    filmOriginalName === 'undefined' ? filmName : filmOriginalName;
+  modalOriginaFilmTitle.innerHTML = `Original-title: ${filmOriginalName} `;
 
   // //film genre
-  // const containerInfo = element.querySelector('.movie-card');
-  // if (!containerInfo) {
-  //   console.error('Element with class .movie-card not found');
-  //   return;
-  // }
+  // const containerInfo = element.querySelector('.container-info');
   // const description = containerInfo.querySelector('.cont-descr');
-  // if (!description) {
-  //   console.error('Element with class .cont-descr not found');
-  //   return;
-  // }
-  // const genre = description.querySelector('p');
-  // if (!genre) {
-  //   console.error('Element with selector p not found');
-  //   return;
-  // }
-  // modalFilmGenre.innerHTML = `Genre: ${genre.textContent}`;
-
-  //about film
-  const filmDescription = elementInfo.getAttribute('data-about');
-  modalFilmDescription.innerHTML += ` ${filmDescription} `;
+  // const genre = description.querySelector('p').textContent;
+  // modalFilmGenre.innerHTML = `Genre: ${genre}`;
+  // //about film
+  // const filmDescription = elementInfo.getAttribute('data-about');
+  // modalFilmDescription.innerHTML += ` ${filmDescription} `;
 
   modal.showModal();
 }
