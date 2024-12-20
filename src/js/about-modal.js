@@ -3,7 +3,14 @@ import Swiper from 'swiper';
 import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { refs } from './refs';
 
-const { aboutModal, body, btnToTop, btnOpenAboutModal, btnCloseAboutModal, swiperModal } = refs;
+const {
+  aboutModal,
+  body,
+  btnToTop,
+  btnOpenAboutModal,
+  btnCloseAboutModal,
+  swiperModal,
+} = refs;
 
 // Open modal when clicking "GoIT Students"
 btnOpenAboutModal.addEventListener('click', openAboutModal);
