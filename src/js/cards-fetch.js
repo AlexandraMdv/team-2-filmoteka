@@ -102,7 +102,3 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchGenres();
   loadMovies(1);
 });
-
-export { loadMovies, renderPagination, genreList };
-
-export {loadMovies, renderPagination, genreList};

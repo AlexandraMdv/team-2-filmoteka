@@ -316,3 +316,74 @@
   font-weight: 500;
   line-height: 1.5;
 }
+
+dialog::backdrop {
+  position: fixed;
+  filter: blur(8px);
+  -webkit-filter: blur(4px);
+  backdrop-filter: sepia(50%);
+}
+
+.votes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.film-detail_votes {
+  background-color: #b92f2c;
+  color: #ffffff;
+  padding: 0px 5px 0px 3px;
+  border-radius: 5px;
+  font-size: 11px;
+  margin: 7px 5px 1px;
+}
+
+.film-detail_votes2 {
+  width: 28px;
+  height: 14px;
+  top: 331px;
+  left: 559px;
+  gap: 0px;
+  opacity: 0px;
+  background-color: #f7f7f7;
+}
+
+.group1 {
+  color: #8c8c8c;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+#Ybtn {
+  background: transparent;
+  border: none;
+}
+
+.youTube {
+  fill: red;
+}
+
+iframe {
+  width: 300px;
+  height: 190px;
+  margin-top: 10px;
+}
+
+#ytplayer {
+  width: 100%;
+  height: 360px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  #ytplayer {
+    width: 664px;
+    height: 370px;
+  }
+}
