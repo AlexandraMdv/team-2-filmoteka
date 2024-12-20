@@ -8,7 +8,7 @@ export function showMoviesOnPage(movies, genreList) {
   container.innerHTML = '';
 
   movies.forEach(movie => {
-    const { title, poster_path, genre_ids, release_date } = movie;
+    const { title, poster_path, genre_ids, release_date, vote_average } = movie;
 
     const posterUrl = poster_path
       ? `https://image.tmdb.org/t/p/w500${poster_path}`
