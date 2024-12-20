@@ -18,19 +18,6 @@
   pointer-events: initial;
 }
 
-@media screen and (min-width: 768px) {
-  .about-modal {
-    max-width: initial;
-    min-width: 740px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .about-modal {
-    min-width: 1220px;
-  }
-}
-
 .about-modal {
   padding-bottom: 10px;
   overflow: hidden;
@@ -43,7 +30,17 @@
   }
 
   .swiper-button-next {
-    color: #b92f2c;
+    color: #B92F2C;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    max-width: initial;
+    width: 740px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1220px;
   }
 
   top: 50%;

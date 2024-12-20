@@ -104,3 +104,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 export { loadMovies, renderPagination, genreList };
+
+export {loadMovies, renderPagination, genreList};
