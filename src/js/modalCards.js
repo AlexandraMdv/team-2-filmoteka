@@ -30,21 +30,28 @@ function galleryHandler(e) {
   }
 
   //average work
-  const elementInfo = element.querySelector('.movie-info');
+  const elementInfo = element.querySelector('.movie-rating');
   if (!elementInfo) {
-    console.error('Element with class .movie-info not found');
+    console.error('Element with class .movie-rating not found');
     return;
   }
-  const voteCount = elementInfo.getAttribute('data-vote-count');
-  const average = elementInfo.getAttribute('data-vote-avg');
+
+  const voteCount = elementInfo
+    .querySelector('.movie-vote-count')
+    .textContent.trim()
+    .replace('/', '')
+    .trim();
+  const average = elementInfo.querySelector('.movie-vote').textContent.trim();
+
   const averageCountNumber = Number(average);
   const averageCountNumberRound = Math.round(averageCountNumber * 10) / 10;
   modalVotes.innerHTML = ` ${averageCountNumberRound.toFixed(1)} `;
-  modalVotes2.innerHTML = ` / ${voteCount}`;
+  modalVotes2.innerHTML = ` ${voteCount}`;
 
   // add movie id to the modal
   const movieId = element.dataset.id;
   modalContainer.dataset.movieId = movieId;
+  console.log('Fetching trailer for movie ID:', movieId);
 
   //image work
   const movieImage = element.querySelector('img');
@@ -63,25 +70,30 @@ function galleryHandler(e) {
   }
   modalFilmName.textContent = containerInfoTitle.textContent;
 
-  // //film popularity
-  // const filmPopularity = elementInfo.getAttribute('data-popularity');
-  // const filmPopularityRound = Math.round(filmPopularity);
-  // modalFilmPopularity.innerHTML = `Popularity: ${filmPopularityRound} `;
+  // film popularity
+  const filmPopularity = element.querySelector('.movie-popularity').textContent;
+  const filmPopularityRound = Math.round(filmPopularity);
+  modalFilmPopularity.innerHTML = `Popularity: ${filmPopularityRound} `;
 
   //film original title
-  const filmOriginalName = elementInfo.getAttribute('data_original_title');
-  const originalTitle =
-    filmOriginalName === 'undefined' ? filmName : filmOriginalName;
+  const filmOriginalName = element.querySelector('.movie-title').textContent;
   modalOriginaFilmTitle.innerHTML = `Original-title: ${filmOriginalName} `;
 
-  // //film genre
-  // const containerInfo = element.querySelector('.container-info');
-  // const description = containerInfo.querySelector('.cont-descr');
-  // const genre = description.querySelector('p').textContent;
-  // modalFilmGenre.innerHTML = `Genre: ${genre}`;
-  // //about film
-  // const filmDescription = elementInfo.getAttribute('data-about');
-  // modalFilmDescription.innerHTML += ` ${filmDescription} `;
+  //film genre
+  const containerInfo = element.querySelector('.movie-info');
+  const description = containerInfo.querySelector('.movie-meta');
+  const genre = description.textContent.split('|')[0];
+  modalFilmGenre.innerHTML = `Genre: ${genre}`;
+
+  // about film
+  const filmDescription = element.querySelector('.movie-overview').textContent;
+  if (!filmDescription) {
+    console.error('Element with data-about attribute not found');
+    return;
+  }
+  modalFilmDescription.innerHTML = `About: ${filmDescription} `;
+
+  fetchAndDisplayTrailer(movieId);
 
   modal.showModal();
 }
@@ -89,6 +101,7 @@ function galleryHandler(e) {
 if (playButton) {
   playButton.addEventListener('click', async () => {
     const movieId = modalContainer.getAttribute('data-movie-id');
+    console.log(`Movie ID: ${movieId}`);
     const trailerId = await fetchMovieTrailer(movieId);
 
     trailerContainer.innerHTML = `<iframe
@@ -109,6 +122,15 @@ if (playButton) {
   });
 }
 
+async function fetchAndDisplayTrailer(movieId) {
+  const trailerId = await fetchMovieTrailer(movieId);
+  if (trailerId) {
+    trailerContainer.innerHTML = `<iframe is="ytplayer" src="https://www.youtube.com/embed/${trailerId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen > </iframe>`;
+  } else {
+    trailerContainer.innerHTML = '<p>No trailer available</p>';
+  }
+}
+
 // Close modal section
 if (closeModal) {
   closeModal.addEventListener('click', () => {
@@ -121,5 +143,12 @@ function clearModalOnClose() {
   const modalDataElements = modal.querySelectorAll('[class*="film-detail"]');
   modalDataElements.forEach(element => {
     element.innerHTML = '';
+  });
+}
+
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    modalContainer.dataset.movieId = '';
+    console.log('Modal closed and data-id reset');
   });
 }

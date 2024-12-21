@@ -11,8 +11,6 @@ import './js/fetchMovieTrailer.js';
 import './js/library-utils.js';
 import './js/header.js';
 import './js/hero-section.js';
-import './js/createLibraryDOM.js';
-import './js/library-modal.js';
 import './js/handle-modal-btns.js';
 import './js/locatStorage.js';
 import './js/header.js';

@@ -8,7 +8,8 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-shown {
@@ -20,14 +21,13 @@
 @media screen and (min-width: 768px) {
   .about-modal {
     max-width: initial;
-    width: 740px;
+    min-width: 740px;
   }
-  
 }
 
 @media screen and (min-width: 1280px) {
   .about-modal {
-    width: 1220px;
+    min-width: 1220px;
   }
 }
 
@@ -36,14 +36,14 @@
   overflow: hidden;
   position: absolute;
   width: 260px;
-  z-index:999;
+  z-index: 999;
 
   .swiper-button-prev {
-    color: #B92F2C;
+    color: #b92f2c;
   }
 
   .swiper-button-next {
-    color: #B92F2C;
+    color: #b92f2c;
   }
 
   top: 50%;
@@ -77,10 +77,10 @@
   fill: #000000;
   border: none;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover,
-    &:focus {
-        transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  &:hover,
+  &:focus {
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .about-modal__btn-icon {
@@ -90,8 +90,9 @@
   height: 30px;
   stroke: #222;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover, &:focus {
-    stroke: #B92F2C;
+  &:hover,
+  &:focus {
+    stroke: #b92f2c;
   }
 }
 
@@ -109,7 +110,6 @@
   border: 1px solid #000000;
   border-radius: 30px;
   background-color: #f7f7f7;
-
 }
 
 .about-modal__img {
@@ -136,22 +136,22 @@
 }
 
 .about-modal__text--position {
-  color: #B92F2C;
+  color: #b92f2c;
   font-size: 12px;
   margin-bottom: 5px;
 }
 
 .footer__btn {
   text-decoration: underline;
-  color:  #545454;;
+  color: #545454;
   border: none;
   cursor: pointer;
 
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      color: #B92F2C;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: #b92f2c;
   }
 }
 .swiper-wrapper {
