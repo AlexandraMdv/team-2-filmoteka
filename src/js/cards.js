@@ -48,7 +48,7 @@ export function showMoviesOnPage(movies, genreList) {
           </div>
        </div>
        <div class="movie-popularity">${popularity}</div>
-  </div>ws
+    </div>
     `;
   });
 }

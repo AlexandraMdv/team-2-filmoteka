@@ -22,9 +22,7 @@ if (gallery) {
 }
 
 function galleryHandler(e) {
-  const element = e.target.closest('.movie-card');
-  console.log(element);
-  
+  const element = e.target.closest('.movie-card');  
 
   if (!element) {
     console.error('Parent element not found');

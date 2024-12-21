@@ -1,31 +1,18 @@
+import Notiflix from "notiflix";
 import { loadMovies } from "./cards-fetch.js"; 
 
-const TRENDING_URL = 'https://api.themoviedb.org/3/trending/all/day?language=en-US';
-const API_KEY = '918aba14d75940fa7e0d80373b9ee894';
-
-async function getMovies() {
-    try {
-        const response = await fetch(`${TRENDING_URL}&api_key=${API_KEY}`);
-        if(!response.ok) {
-            throw new Error(`HTTP request error! ${response.status}`);
-        }
-        
-        const data = await response.json();
-        return data.results;
-    } catch (error) {
-        console.error(error);
-    }
-        
-}
+Notiflix.Notify.init({
+    parentId: '.film-info-modal',
+    width: '280px',
+    position: 'right-top', 
+    zindex: 14001,
+});
 
 const libraryBtn = document.querySelector('.my-library-btn');
 libraryBtn.addEventListener('click', loadMoviesLibrary);
-const heroSection = document.querySelector('.hero-section');
 
 async function loadMoviesLibrary() {
     changeHeader();
-    // disableSections(heroSection);
-    // heroSection.classList.add('disable-section')
  
     try {
         loadMovies(1);
@@ -60,57 +47,44 @@ function changeHeader() {
     `;
 }
 
-function renderMovies(movies) {
-    const moviesContainer = document.querySelector('.cards-container');
-    moviesContainer.innerHTML = ''; // Clear existing movies before rendering
+const watchedBtn = document.querySelector('.add-to-watch');
+const queueBtn = document.querySelector('.add-to-watch:last-of-type');
+let movieToStore = {};
 
-    movies.forEach(movie => {
+watchedBtn.addEventListener('click', (event) => {    
+    const selectModal = event.target.closest('.modal');
+    const movieId = selectModal.getAttribute('data-movie-id');
+    const movieTitle = selectModal.querySelector('.film_title').innerText;
+    const movieImage = selectModal.querySelector('.img_content img');
+    const movieSrc = movieImage.src;
+
+    movieToStore = {
+        id: Number(movieId), 
+        title: movieTitle, 
+        path: movieSrc
+    };
+    console.log(movieToStore); 
     
-        const {poster_path: path, id } = movie;
+    addToLocalStorage('watched', movieToStore);
+})
 
-        let title = 'Unknown'; 
-        if (movie.title) title = movie.title
-        else if (movie.name) title = movie.name;
+queueBtn.addEventListener('click', (event) => {    
+    const selectModal = event.target.closest('.modal');
+    updateButtonText(selectModal);
+    const movieId = selectModal.getAttribute('data-movie-id');
+    const movieTitle = selectModal.querySelector('.film_title').innerText;
+    const movieImage = selectModal.querySelector('.img_content img');
+    const movieSrc = movieImage.src;
 
-        moviesContainer.innerHTML += `
-        <div class="movie-card" data-movie-id="${id}>
-            ${
-            posterUrl
-                ? `<img src="https://image.tmdb.org/t/p/w500${path}" alt="${title}" class="movie-poster">`
-                : ''
-            }
-            <div class="movie-info">
-            <h3 class="movie-title">${title.toUpperCase()}</h3>
-            <p class="movie-meta">${genres} | ${year}</p>
-            </div>
-        </div>
-        `
-    });
-
-    // Attach event listeners to buttons
-    attachButtonListeners(movies);
-}
-
-function attachButtonListeners(movies) {
-    const watchedButtons = document.querySelectorAll('.add-to-watched');
-    const queueButtons = document.querySelectorAll('.add-to-queue');
-
-    watchedButtons.forEach(button => {
-        button.addEventListener('click', event => {
-        const movieId = event.target.getAttribute('data-movie-id');
-        const movie = movies.find(m => m.id === Number(movieId));
-        addToLocalStorage('watched', movie);
-        });
-    });
-
-    queueButtons.forEach(button => {
-        button.addEventListener('click', event => {
-        const movieId = event.target.getAttribute('data-movie-id');
-        const movie = movies.find(m => m.id === Number(movieId));
-        addToLocalStorage('queue', movie);
-        });
-    });
-}
+    movieToStore = {
+        id: Number(movieId), 
+        title: movieTitle, 
+        path: movieSrc
+    };
+    console.log(movieToStore); 
+    
+    addToLocalStorage('queue', movieToStore);
+})
 
 function addToLocalStorage(key, movieToStore) {
     if (!movieToStore) return; // for invalid movies
@@ -120,10 +94,12 @@ function addToLocalStorage(key, movieToStore) {
     const isMovieStored = storedMovies.findIndex(storedMovie => storedMovie.id === movieToStore.id) !== -1;
 
     if (isMovieStored) {
-        console.log(`Movie already in ${key} list:`, movieToStore.title);
-        alert('Movie already in list')
+        console.log(`Movie already in ${key} list:`, movieToStore.title);        
+        Notiflix.Notify.failure('Movie is already in list');
         return;
     }
+
+    Notiflix.Notify.success('Movie successfully added to list');
 
     let title = 'Unknown';
     if(movieToStore.title) title = movieToStore.title
@@ -132,7 +108,7 @@ function addToLocalStorage(key, movieToStore) {
     storedMovies.push({
         id: movieToStore.id,
         title: title,
-        path: movieToStore.poster_path,
+        path: movieToStore.path,
     });
 
     localStorage.setItem(key, JSON.stringify(storedMovies));
@@ -141,9 +117,6 @@ function addToLocalStorage(key, movieToStore) {
 function renderWatchedMovies(key) {
     // Retrieve movies from localStorage
     const watchedArray = JSON.parse(localStorage.getItem(key)) || [];
-    console.log(watchedArray);
-    
-
     const moviesContainer = document.querySelector('.cards-container');
     moviesContainer.innerHTML = ''; // Clear existing movies before rendering
 
@@ -169,3 +142,4 @@ function renderWatchedMovies(key) {
     `;
     });
 }
+
