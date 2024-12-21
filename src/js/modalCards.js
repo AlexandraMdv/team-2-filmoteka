@@ -23,6 +23,8 @@ if (gallery) {
 
 function galleryHandler(e) {
   const element = e.target.closest('.movie-card');
+  console.log(element);
+  
 
   if (!element) {
     console.error('Parent element not found');
@@ -30,9 +32,9 @@ function galleryHandler(e) {
   }
 
   //average work
-  const elementInfo = element.querySelector('.movie-rating');
+  const elementInfo = element.querySelector('.movie-rating-modal');
   if (!elementInfo) {
-    console.error('Element with class .movie-rating not found');
+    console.error('Element with class .movie-rating-modal not found');
     return;
   }
 
@@ -51,7 +53,6 @@ function galleryHandler(e) {
   // add movie id to the modal
   const movieId = element.dataset.id;
   modalContainer.dataset.movieId = movieId;
-  console.log('Fetching trailer for movie ID:', movieId);
 
   //image work
   const movieImage = element.querySelector('img');
@@ -101,7 +102,7 @@ function galleryHandler(e) {
 if (playButton) {
   playButton.addEventListener('click', async () => {
     const movieId = modalContainer.getAttribute('data-movie-id');
-    console.log(`Movie ID: ${movieId}`);
+    // console.log(`Movie ID: ${movieId}`);
     const trailerId = await fetchMovieTrailer(movieId);
 
     trailerContainer.innerHTML = `<iframe
@@ -149,6 +150,6 @@ function clearModalOnClose() {
 if (closeModal) {
   closeModal.addEventListener('click', () => {
     modalContainer.dataset.movieId = '';
-    console.log('Modal closed and data-id reset');
+    // console.log('Modal closed and data-id reset');
   });
 }
