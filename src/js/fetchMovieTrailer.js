@@ -2,7 +2,7 @@ import { API_KEY, ENDPOINT } from './api';
 
 export const fetchMovieTrailer = async movieId => {
   try {
-    const url = `${ENDPOINT}/movie/${movieId}/videos?api_key=${API_KEY}`;
+    const url = `${ENDPOINT}3/movie/${movieId}/videos?api_key=${API_KEY}`;
     const resp = await fetch(url);
 
     if (!resp.ok) {

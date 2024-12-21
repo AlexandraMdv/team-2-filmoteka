@@ -264,6 +264,18 @@
   display: grid;
 }
 
+.group0 {
+  width: 67px;
+  height: 16px;
+  color: #8c8c8c;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
 .group1 {
   width: 36px;
   height: 16px;
@@ -291,6 +303,7 @@
   margin-top: 20px;
   font-weight: 500;
   line-height: 20px;
+  max-width: 400px;
 }
 
 .about {
@@ -327,8 +340,8 @@ dialog::backdrop {
 }
 
 .film-detail_votes2 {
-  width: 28px;
-  height: 14px;
+  width: 36px;
+  height: 16px;
   top: 331px;
   left: 559px;
   gap: 0px;
@@ -337,13 +350,39 @@ dialog::backdrop {
 }
 
 .group1 {
-  color: #8c8c8c;
+  color: #ffffff;
   margin-top: 8px;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+}
+
+.group2 {
+  color: #000000;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14.06px;
+  width: 28px;
+  text-align: center;
+}
+
+.slash {
+  width: 8px;
+  height: 16px;
+  top: 341px;
+  left: 828px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
 }
 
 #Ybtn {

@@ -8,8 +8,16 @@ export function showMoviesOnPage(movies, genreList) {
   container.innerHTML = '';
 
   movies.forEach(movie => {
-    const { title, poster_path, genre_ids, release_date, vote_average } = movie;
-
+    const {
+      title,
+      poster_path,
+      genre_ids,
+      release_date,
+      overview,
+      vote_average,
+      vote_count,
+      popularity,
+    } = movie;
     const posterUrl = poster_path
       ? `https://image.tmdb.org/t/p/w500${poster_path}`
       : '';
@@ -23,16 +31,22 @@ export function showMoviesOnPage(movies, genreList) {
     const year = release_date ? new Date(release_date).getFullYear() : 'N/A';
 
     container.innerHTML += `
-      <div class="movie-card">
+      <div class="movie-card" data-id="${movie.id}">
         ${
           posterUrl
             ? `<img src="${posterUrl}" alt="${title}" class="movie-poster">`
             : ''
         }
         <div class="movie-info">
-          <h3 class="movie-title">${title.toUpperCase()}</h3>
+          <h3 class="movie-title">${title}</h3>
           <p class="movie-meta">${genres} | ${year}</p>
-        </div>
+          <p class="movie-overview">${overview}</p>
+
+          <div class="movie-rating">
+            <span class="movie-vote">${vote_average}</span>
+            <span class="movie-vote-count">/ ${vote_count}</span>
+       </div>
+       <div class="movie-popularity">${popularity}</div>
       </div>
     `;
   });

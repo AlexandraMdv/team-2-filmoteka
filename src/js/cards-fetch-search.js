@@ -44,25 +44,24 @@ const searchInput = document.getElementById('movie-search');
 searchInput.addEventListener('keypress', async event => {
   if (event.key === 'Enter') {
     const query = searchInput.value;
-    if (!query.trim()){
-      Notiflix.Notify.failure('dssdn')
+    if (!query.trim()) {
+      Notiflix.Notify.failure('dssdn');
       return;
     }
-       
-    
+
     await loadSearchResults(query, 1); // Load the first page of search results
+  }
 });
-  
-searchInput.addEventListener('keypress', async(event) => {
-    if(event.key === 'Enter') {
-      const query = searchInput.value;
+
+searchInput.addEventListener('keypress', async event => {
+  if (event.key === 'Enter') {
+    const query = searchInput.value;
     if (!query.trim()) {
       Notiflix.Notify.failure('Please type something!');
       return;
-    } 
-    
+    }
+
     Notiflix.Notify.success('Searching for movies...');
     await loadSearchResults(query, 1); // Load the first page of search results
-    }
-})
-  
+  }
+});
