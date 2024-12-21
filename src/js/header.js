@@ -23,5 +23,5 @@ const homeBtn = document.getElementById('buttonHome');
 
 homeBtn.addEventListener('click', () => {
     window.location.href = 'index.html';
-});
 
+});
