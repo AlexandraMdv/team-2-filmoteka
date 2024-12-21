@@ -106,10 +106,10 @@ window.addEventListener('click', e => {
 });
 
 // function to close modal by esc
-document.addEventListener('keydown', event => {
-  event.preventDefault();
-  if (event.key === 'Escape') {
-    clearModalOnClose();
-    modal.close();
-  }
-});
+// document.addEventListener('keydown', event => {
+//   event.preventDefault();
+//   if (event.key === 'Escape') {
+//     clearModalOnClose();
+//     modal.close();
+//   }
+// });

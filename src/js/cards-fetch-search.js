@@ -3,6 +3,8 @@ import { showMoviesOnPage } from './cards.js';
 import { renderPagination } from './cards-fetch.js';
 import { genreList } from './cards-fetch.js';
 
+import Notiflix from 'notiflix/build/notiflix-notify-aio';
+
 // Fetch movies based on a search query
 async function searchMovies(query, page = 1) {
   if (!query.trim()) {
@@ -42,8 +44,25 @@ const searchInput = document.getElementById('movie-search');
 searchInput.addEventListener('keypress', async event => {
   if (event.key === 'Enter') {
     const query = searchInput.value;
-    if (!query.trim()) return;
-
+    if (!query.trim()){
+      Notiflix.Notify.failure('dssdn')
+      return;
+    }
+       
+    
     await loadSearchResults(query, 1); // Load the first page of search results
-  }
 });
+  
+searchInput.addEventListener('keypress', async(event) => {
+    if(event.key === 'Enter') {
+      const query = searchInput.value;
+    if (!query.trim()) {
+      Notiflix.Notify.failure('Please type something!');
+      return;
+    } 
+    
+    Notiflix.Notify.success('Searching for movies...');
+    await loadSearchResults(query, 1); // Load the first page of search results
+    }
+})
+  

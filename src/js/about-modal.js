@@ -26,7 +26,6 @@ function openAboutModal() {
 
   aboutModal.classList.add('is-shown');
   body.classList.add('modal-open');
-
   document.addEventListener('keydown', handleEscKey);
   aboutModal.addEventListener('click', handleOutsideClick);
 }
@@ -42,7 +41,6 @@ function handleOutsideClick(e) {
 function closeAboutModal() {
   aboutModal.classList.remove('is-shown');
   body.classList.remove('modal-open');
-
   document.removeEventListener('keydown', handleEscKey);
   aboutModal.removeEventListener('click', handleOutsideClick);
 }
