@@ -22,6 +22,6 @@ searchInput.addEventListener('keypress', event => {
 const homeBtn = document.getElementById('buttonHome');
 
 homeBtn.addEventListener('click', () => {
-    window.location.href = 'index.html';
+  window.location.href = 'index.html';
 
 });
