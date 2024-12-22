@@ -5,9 +5,9 @@ const carouselMovies = document.querySelector('.carousel-movies');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 
-
 let movies = [];
 let currentIndex = 0;
+let autoMoveInterval;
 
 async function fetchMovies() {
   const response = await fetch(API_URL);
@@ -18,7 +18,7 @@ async function fetchMovies() {
 
 function displayMovies() {
   carouselMovies.innerHTML = '';
-  movies.forEach((movie) => {
+  movies.forEach(movie => {
     const movieEl = document.createElement('div');
     movieEl.classList.add('movie');
     movieEl.innerHTML = `
@@ -31,6 +31,7 @@ function displayMovies() {
     carouselMovies.appendChild(movieEl);
   });
   updateCarousel();
+  startAutoMove();
 }
 
 function updateCarousel() {
@@ -40,22 +41,44 @@ function updateCarousel() {
   carouselMovies.style.transform = `translateX(${offset}px)`;
 }
 
+function startAutoMove() {
+  clearInterval(autoMoveInterval);
+  autoMoveInterval = setInterval(() => {
+    const movieWidth = document.querySelector('.movie').offsetWidth;
+    const containerWidth = carouselMovies.offsetWidth;
+    const maxIndex = Math.round(
+      (movies.length * movieWidth - containerWidth) / movieWidth
+    );
+
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    updateCarousel();
+  }, 3000);
+}
+
 prevBtn.addEventListener('click', () => {
   if (currentIndex > 0) {
     currentIndex--;
     updateCarousel();
   }
+  startAutoMove();
 });
 
 nextBtn.addEventListener('click', () => {
   const movieWidth = document.querySelector('.movie').offsetWidth; // Calculate dynamic image width
   const containerWidth = carouselMovies.offsetWidth;
-  const maxIndex = Math.round((movies.length * movieWidth - containerWidth) / movieWidth);
+  const maxIndex = Math.round(
+    (movies.length * movieWidth - containerWidth) / movieWidth
+  );
 
   if (currentIndex < maxIndex) {
     currentIndex++;
     updateCarousel();
   }
+  startAutoMove();
 });
 
 fetchMovies();

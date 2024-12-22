@@ -4,7 +4,7 @@
 }
 
 .hero-section {
-  width : 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -107,6 +107,10 @@ body.dark-mode {
 
 .slider.dark-mode {
   background-color: #757575;
+}
+
+body.dark-mode .movie-card .movie-title {
+  color: #000000;
 }
 
 /* Media queries pentru telefoane */
