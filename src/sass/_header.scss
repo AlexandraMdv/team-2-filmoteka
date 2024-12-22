@@ -1,0 +1,190 @@
+//-- Mobile First -- //
+@media (max-width: 767px) {
+
+    header.container {
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        height: 460px;
+
+    }
+
+    .buttons-header {
+        flex-direction: column-reverse;
+    }
+
+    .buttons-header-my-library {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .home,
+    .mylibrary {
+        background-color: #555;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .home:hover,
+    .mylibrary:hover {
+        background-color: #777;
+       
+    }
+
+    .search-box {
+        justify-content: center;
+        width: 100%;
+        flex-direction: column-reverse;
+        gap: 20px;
+
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+    }
+}
+
+//-- desktop -- //
+
+    
+@media (min-width: 767px) {
+    header.container {
+        height: 300px;
+    }
+    
+    .buttons-header {
+        flex-direction: row;
+    }
+
+    .search-box {
+        padding-left: 20px;
+    }
+
+    .buttons-header-my-library {
+        display: flex;
+        justify-content: space-between;
+    }
+} 
+
+@media (min-width: 1024px) {
+    header.container {
+        height: 300px;
+    }
+}
+
+header.container {
+    padding: 20px;
+    width: 100%;
+    background-image: url('../images/abstract-background-with-red-lines\ 1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.search-box input {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 100px;
+}
+
+.buttons-header {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.buttons-header-my-library {
+    text-transform: uppercase;
+}
+
+.buttons-header-my-library .my-library-btn {
+    background-color: #000;
+    color: #fff;
+}
+
+.search-box {
+    display: flex;
+}
+
+.search-box input {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    color: black;
+    background-color: #fff;
+}
+
+
+
+.mylibrary, 
+.library-btn {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.home {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.buttons-header button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.buttons-header button:last-child:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.buttons-header-my-library button.library-btn:hover,
+.buttons-header-my-library button.library-btn:active,
+.buttons-header-my-library button.library-btn:focus {
+    background-color: #000;
+    color: #fff;
+}
+
+.buttons-header-my-library button.library-btn:visited {
+    background-color: #fff;
+    color: #000;
+}
+
+.buttons-header-my-library {}
+
+.buttons-header-my-library .user-lists-btns button:hover,
+.buttons-header-my-library .user-lists-btns button:active,
+.buttons-header-my-library .user-lists-btns button:focus {
+    background-color: #b92f2c;
+}

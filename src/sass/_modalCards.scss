@@ -2,6 +2,22 @@
   outline: 1;
 }
 
+.film_info_modal,
+.library-film_info_modal {
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+  margin: auto auto;
+  border: none;
+  height: max-content;
+  border-radius: 15px;
+  overflow: overlay;
+}
+
 .modal {
   background-color: #fff;
   margin: 0 auto;
@@ -12,14 +28,11 @@
   height: 100%;
   border-radius: 15px;
   height: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @media screen and (max-width: 992px) {
   .modal {
-    width: 600px;
+    // width: 600px;
     padding: 40px 36px;
     transform: 50%;
   }
@@ -29,7 +42,7 @@
   .modal {
     max-width: 320px;
     padding: 48px 20px;
-    max-width: 704px;
+    // max-width: 704px;
   }
 }
 
@@ -109,7 +122,6 @@
   height: 478px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('/src/images/img-modal.png');
 }
 
 @media screen and (max-width: 992px) {
@@ -142,12 +154,13 @@
 
 @media screen and (max-width: 767px) {
   .info_content {
-    width: 704px;
-    height: 552px;
-    top: 250px;
-    left: 32px;
-    gap: 0px;
-    opacity: 0px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    margin-top: 20px;
+    width: 240px;
   }
 }
 
@@ -170,6 +183,27 @@
   font-size: 12px;
   line-height: 16px;
   color: #8c8c8c;
+}
+
+.close-button {
+  width: 20px;
+  cursor: pointer;
+  float: right;
+  background-color: transparent;
+  border: none;
+  opacity: 0.7;
+  margin-top: -10px;
+}
+
+@media screen and (max-width: 767px) {
+  .close-button {
+    margin-top: 0;
+    margin-right: 0;
+  }
+}
+
+.close-btn {
+  fill: #000000;
 }
 
 .buttons {
@@ -230,9 +264,21 @@
   display: grid;
 }
 
+.group0 {
+  width: 67px;
+  height: 16px;
+  color: #8c8c8c;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
 .group1 {
-  width: 17px;
-  height: 14px;
+  width: 36px;
+  height: 16px;
   top: 469px;
   left: 138px;
   gap: 0px;
@@ -244,37 +290,8 @@
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  background-color: #d41443;
+  // background-color: #b92f2c;
   color: #ffffff;
-}
-
-.slashSymbol {
-  font-family: Roboto;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 14.06px;
-  text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color: #8c8c8c;
-}
-
-.group2 {
-  width: 36px;
-  height: 16px;
-  top: 469px;
-  left: 179px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: Roboto;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 14.06px;
-  text-align: center;
-  border-radius: 5px;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  background-color: #f7f7f7;
 }
 
 .film_about {
@@ -286,6 +303,7 @@
   margin-top: 20px;
   font-weight: 500;
   line-height: 20px;
+  max-width: 400px;
 }
 
 .about {
@@ -297,4 +315,101 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
+}
+
+dialog::backdrop {
+  position: fixed;
+  filter: blur(8px);
+  -webkit-filter: blur(4px);
+  backdrop-filter: sepia(50%);
+}
+
+.votes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.film-detail_votes {
+  background-color: #b92f2c;
+  color: #ffffff;
+  padding: 0px 5px 0px 3px;
+  border-radius: 5px;
+  font-size: 11px;
+  margin: 7px 5px 1px;
+}
+
+.film-detail_votes2 {
+  width: 36px;
+  height: 16px;
+  top: 331px;
+  left: 559px;
+  gap: 0px;
+  opacity: 0px;
+  background-color: #f7f7f7;
+}
+
+.group1 {
+  color: #ffffff;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.group2 {
+  color: #000000;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14.06px;
+  width: 28px;
+  text-align: center;
+}
+
+.slash {
+  width: 8px;
+  height: 16px;
+  top: 341px;
+  left: 828px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+}
+
+#Ybtn {
+  background: transparent;
+  border: none;
+}
+
+.youTube {
+  fill: red;
+}
+
+iframe {
+  width: 300px;
+  height: 190px;
+  margin-top: 10px;
+}
+
+#ytplayer {
+  width: 100%;
+  height: 360px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  #ytplayer {
+    width: 664px;
+    height: 370px;
+  }
 }

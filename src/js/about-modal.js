@@ -3,7 +3,14 @@ import Swiper from 'swiper';
 import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { refs } from './refs';
 
-const { aboutModal, body, btnToTop, btnOpenAboutModal, btnCloseAboutModal, swiperModal } = refs;
+const {
+  aboutModal,
+  body,
+  btnToTop,
+  btnOpenAboutModal,
+  btnCloseAboutModal,
+  swiperModal,
+} = refs;
 
 // Open modal when clicking "GoIT Students"
 btnOpenAboutModal.addEventListener('click', openAboutModal);
@@ -19,7 +26,6 @@ function openAboutModal() {
 
   aboutModal.classList.add('is-shown');
   body.classList.add('modal-open');
-  btnToTop.style.display = 'none';
   document.addEventListener('keydown', handleEscKey);
   aboutModal.addEventListener('click', handleOutsideClick);
 }
@@ -35,7 +41,6 @@ function handleOutsideClick(e) {
 function closeAboutModal() {
   aboutModal.classList.remove('is-shown');
   body.classList.remove('modal-open');
-  btnToTop.style.display = 'block';
   document.removeEventListener('keydown', handleEscKey);
   aboutModal.removeEventListener('click', handleOutsideClick);
 }
