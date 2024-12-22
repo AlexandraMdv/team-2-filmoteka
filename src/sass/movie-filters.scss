@@ -17,7 +17,7 @@
 
 select,
 input {
-  color: rgb(4, 4, 4);
+  color: rgba(185, 47, 44, 1);
   text-align: center;
   border: 2px solid black;
   border-radius: 100px;
@@ -32,7 +32,7 @@ input {
 
 .genre:focus {
   background-color: rgba(185, 47, 44, 1);
-  border: 2px solid black;
+  border: 1px solid black;
   color: white;
 }
 
@@ -42,7 +42,7 @@ input {
 
 .year:focus {
   background-color: rgba(185, 47, 44, 1);
-  border: 2px solid black;
+  border: 1px solid black;
   color: white;
 }
 
@@ -52,7 +52,7 @@ input {
 
 .rating:focus {
   background-color: rgba(185, 47, 44, 1);
-  border: 2px solid black;
+  border: 1px solid black;
   color: white;
 }
 
@@ -70,7 +70,7 @@ input {
 .button-filters:focus {
   background-color: white;
   color: black;
-  border: 2px solid rgba(185, 47, 44, 1);
+  border: 1px solid rgba(185, 47, 44, 1);
   font-weight: 900;
 }
 
