@@ -25,7 +25,6 @@ async function fetchMovies(page) {
     if (!response.ok) throw new Error('Failed to fetch movies');
     const data = await response.json();
     totalPages = Math.min(data.total_pages, 20);
-    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error('Error fetching movies:', error);
@@ -103,4 +102,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadMovies(1);
 });
 
-export { loadMovies, renderPagination, genreList };
+export { loadMovies, renderPagination, genreList, fetchMovies, fetchGenres };

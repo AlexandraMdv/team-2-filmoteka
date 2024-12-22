@@ -42,12 +42,13 @@ export function showMoviesOnPage(movies, genreList) {
           <p class="movie-meta">${genres} | ${year}</p>
           <p class="movie-overview">${overview}</p>
 
-          <div class="movie-rating">
+          <div class="movie-rating-modal">
             <span class="movie-vote">${vote_average}</span>
             <span class="movie-vote-count">/ ${vote_count}</span>
+          </div>
        </div>
        <div class="movie-popularity">${popularity}</div>
-      </div>
+    </div>
     `;
   });
 }
