@@ -22,7 +22,7 @@ if (gallery) {
 }
 
 function galleryHandler(e) {
-  const element = e.target.closest('.movie-card');
+  const element = e.target.closest('.movie-card');  
 
   if (!element) {
     console.error('Parent element not found');
@@ -30,9 +30,9 @@ function galleryHandler(e) {
   }
 
   //average work
-  const elementInfo = element.querySelector('.movie-info');
+  const elementInfo = element.querySelector('.movie-rating');
   if (!elementInfo) {
-    console.error('Element with class .movie-info not found');
+    console.error('Element with class .movie-rating not found');
     return;
   }
   const voteCount = elementInfo.getAttribute('data-vote-count');
@@ -89,6 +89,7 @@ function galleryHandler(e) {
 if (playButton) {
   playButton.addEventListener('click', async () => {
     const movieId = modalContainer.getAttribute('data-movie-id');
+    console.log(`Movie ID: ${movieId}`);
     const trailerId = await fetchMovieTrailer(movieId);
 
     trailerContainer.innerHTML = `<iframe
@@ -121,5 +122,12 @@ function clearModalOnClose() {
   const modalDataElements = modal.querySelectorAll('[class*="film-detail"]');
   modalDataElements.forEach(element => {
     element.innerHTML = '';
+  });
+}
+
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    modalContainer.dataset.movieId = '';
+    console.log('Modal closed and data-id reset');
   });
 }
