@@ -1,0 +1,77 @@
+<div class='modal-card auth'>
+  <div class='auth-container' id='auth-container'>
+    <div style='display: none' id='not-logged-in'>
+      <div class='form-container sign-up-container'>
+        <form id='sign-up-form' action='#'>
+          <h1>Create Account</h1>
+          <span>Use your email for registration</span>
+          <input
+            type='email'
+            id='email_signUp'
+            name='email'
+            placeholder='email'
+            autocomplete='true'
+          />
+          <input
+            autocomplete='true'
+            type='password'
+            id='password_signUp'
+            name='password'
+            placeholder='password'
+          />
+          <input id='btn_singUp' class='button' type='submit' value='Sign Up' />
+
+        </form>
+      </div>
+      <div class='form-container sign-in-container'>
+        <form id='sign-in-form' action='#'>
+          <h1>Sign in</h1>
+          <input
+            autocomplete='true'
+            type='email'
+            id='email_signIn'
+            name='email'
+            placeholder='email'
+          />
+          <input
+            autocomplete='true'
+            type='password'
+            id='password_signIn'
+            name='password'
+            placeholder='password'
+          />
+          <input id='btn_singIn' class='button' type='submit' value='Log in' />
+        </form>
+      </div>
+      <div class='overlay-container'>
+        <div class='overlay'>
+          <div class='overlay-panel overlay-left'>
+            <h1>Welcome Back!</h1>
+            <p>To save your favorite films please login with your email</p>
+            <button class='button ghost' id='switchSignIn'>Sign In</button>
+          </div>
+          <div class='overlay-panel overlay-right'>
+            <h1>Hello, Friend!</h1>
+            <p>Enter your email and start store your favorite films</p>
+            <button class='button ghost' id='switchSignUp'>Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style='display: none; height:100%' id='logged-in'>
+      <div class='innerSide'>
+        <span class='innerSide-text'>Welcome back </span><span
+          class='innerSide-text'
+          id='user_email'
+        ></span>
+        <button class='button' id='btn_logout'>Log out</button>
+      </div>
+    </div>
+  </div>
+
+  <button class='modal-card__close-btn' data-modal-close>
+    <svg class='card-btn-close' width='30' height='30'>
+      <use href='../images/sprite.svg#card-btn-close'></use>
+    </svg>
+  </button>
+</div>

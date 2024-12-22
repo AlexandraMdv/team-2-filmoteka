@@ -4,3 +4,7 @@ import './js/cards-fetch.js';
 import './js/cards.js';
 import './js/carousel.js';
 import './js/about-modal.js';
+import './js/firebaseConfig.js';
+import './js/dynamicRefs.js';
+import './js/login.js';
+import './js/authModalWindowContent.js';
