@@ -62,7 +62,6 @@ watchedBtn.addEventListener('click', event => {
     title: movieTitle,
     path: movieSrc,
   };
-  console.log(movieToStore);
 
   addToLocalStorage('watched', movieToStore);
 });
@@ -79,8 +78,6 @@ queueBtn.addEventListener('click', event => {
     title: movieTitle,
     path: movieSrc,
   };
-  console.log(movieToStore);
-
   addToLocalStorage('queue', movieToStore);
 });
 
@@ -95,7 +92,6 @@ function addToLocalStorage(key, movieToStore) {
     ) !== -1;
 
   if (isMovieStored) {
-    console.log(`Movie already in ${key} list:`, movieToStore.title);
     Notiflix.Notify.failure('Movie is already in list');
     return;
   }
