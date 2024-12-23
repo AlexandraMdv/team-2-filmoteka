@@ -5,7 +5,7 @@ import './js/cards.js';
 import './js/carousel.js';
 import './js/library.js';
 import './js/about-modal.js';
-// import './js/movie-filters.js';
+import './js/movie-filters.js';
 import './js/modalCards.js';
 import './js/fetchMovieTrailer.js';
 import './js/library-utils.js';

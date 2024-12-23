@@ -3,7 +3,7 @@ import { GENRES_URL } from './api.js';
 import { showMoviesOnPage } from './cards.js';
 
 let pageNumber = 1;
-let totalPages = 20;
+let totalPages = 100;
 let genreList = {};
 const paginationContainer = document.getElementById('pagination');
 
@@ -24,7 +24,7 @@ async function fetchMovies(page) {
     const response = await fetch(TRENDING_MOVIES_URL(page));
     if (!response.ok) throw new Error('Failed to fetch movies');
     const data = await response.json();
-    totalPages = Math.min(data.total_pages, 20);
+    totalPages = Math.min(data.total_pages, 100);
     return data.results;
   } catch (error) {
     console.error('Error fetching movies:', error);
@@ -74,20 +74,14 @@ function createButton(text, enabled, onClick, active = false) {
   button.disabled = !enabled;
 
   if (text === 'left' || text === 'right') {
-    const img = document.createElement('img');
-    img.src =
-      text === 'left'
-        ? './images/icons.svg#icon-arrow-left'
-        : './images/icons.svg#icon-arrow-right';
-    img.alt = text === 'left' ? 'Previous' : 'Next';
-    img.className = 'pagination-icon';
-    button.appendChild(img);
+    button.textContent = text === 'left' ? '←' : '→';
+    button.className += ' pagination-arrow';
   } else {
     button.textContent = text;
-
-    if (enabled) button.addEventListener('click', onClick);
-    paginationContainer.appendChild(button);
   }
+
+  if (enabled) button.addEventListener('click', onClick);
+  paginationContainer.appendChild(button);
 }
 
 function addDots() {
